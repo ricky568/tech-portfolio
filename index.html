@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tech Portfolio By Ricky</title>
+  <style>
+    /* Reset some default styles */
+    html {
+      scroll-snap-type: y mandatory;
+      overflow-y: scroll;
+    }
+    body, html {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Overall layout */
+    .container {
+      display: flex;
+      flex-direction: row;
+      min-height: 100vh;
+      justify-content: flex-end;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 200px;
+      background-color: #f1f1f1;
+      padding: 20px;
+      position: fixed;
+      height: 100vh;
+      height: 200svh;
+      width: 20vw;
+      width: 20svw;
+      top: 0;
+      left: 0;
+      z-index: 999;
+    }
+
+    .sidebar ul {padding: 0;}
+
+    .sidebar > ul li {
+      list-style: none;
+      padding: 10px 20px;
+      transition: all 300ms ease-in-out;
+    }
+
+    .sidebar > ul li:hover {
+      background: #999;
+    }
+
+    .sidebar a {
+      text-decoration: none;
+      font-family: sans-serif;
+      color: #000;
+    }
+
+    .sidebar ul li:not(:last-child) {
+      border-bottom: 1px solid #00000099;
+    }
+
+    .sidebar a svg {
+      margin-right: 10px;
+    }
+
+    .profile-pic {
+      overflow: hidden;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      border: 6px double #333;
+    }
+
+    .profile-pic img {
+      width: 100%;
+      object-fit: cover;
+      height: 100%;
+    }
+
+    /* Sections */
+    .main-section {
+      padding-left: 20vw;
+      width: 100%;
+      font-family: sans-serif;
+      color: #000;
+    }
+
+    .section {
+      min-height: 100vh;
+      min-height: 100svh;
+      padding: 60px;
+      scroll-snap-align: center;
+      scroll-behavior: smooth;
+      padding: 60px 60px 60px 100px;
+    }
+
+    .section#home {
+        background: url(assets/main-bg.jpg) no-repeat;
+        background-size: cover;
+    }
+
+    video {
+      width: 100%;
+      height: 350px;
+    }
+    #home .title {
+      position: absolute;
+      bottom: 5%;
+      right: 5%;
+    }
+
+    .title h1, .title p {text-transform: uppercase;}
+
+    .section#cybersecurity {
+      background: url(assets/cs.jpg) no-repeat;
+      background-size: cover;
+      position: relative;
+    }
+
+    #cybersecurity h2 {color: #fff;}
+
+    .video-container {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      padding-top: 56.25%;
+    }
+    .video-container video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+    }
+
+    #survey h2 {text-align: center;}
+
+    .section#cybersecurity::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 255,255, 0.3);
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      backdrop-filter: blur( 2px );
+      -webkit-backdrop-filter: blur( 2px );
+    }
+
+    #cybersecurity h2, .video-container {
+      z-index: 2;
+      position: relative;
+    }
+    img {
+      width: 100%;
+    }
+    .survey-photo {
+      width: 570px;
+      margin: 0 auto;
+    }
+    .computer-parts {
+      width: 600px;
+      margin: 0 auto;
+    }
+
+    .section#computer h2 {text-align: center;}
+
+    ul.slick-dots {
+      display: flex;
+      list-style: none;
+      gap: 5px;
+      justify-content: center;
+    }
+    ul.slick-dots button {
+      border: 1px solid #333;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+    }
+    ul.slick-dots .slick-active button {
+      background: #000;
+      color: #fff;
+    }
+    .section:nth-of-type(odd) {
+      background: #ededed;
+    }
+    .links li {
+      list-style: none;
+    }
+
+    .links a {
+      background: #000;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #f1f1f1;
+      border-radius: 50%;
+      transition: all 300ms ease-in-out;
+    }
+    .links a svg {
+      margin: 0;
+    }
+    .links a:hover {
+      transform: scale(1.2);
+    }
+    .links {
+      display: flex;
+      justify-content: center;
+      gap: 7px;
+      margin-top: 20px;
+    }
+  </style>
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+  <!-- Slick Carousel -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+</head>
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <div class="profile-pic">
+        <img src="assets/ricky-arenas.jpg" alt="Ricky Arenas">
+      </div>
+      <ul>
+        <li><a href="#home"><i class="fa-solid fa-house"></i>Home</a></li>
+        <li><a href="#cybersecurity"><i class="fa-solid fa-lock"></i>Cybersecurity</a></li>
+        <li><a href="#survey"><i class="fa-solid fa-chart-pie"></i>Survey</a></li>
+        <li><a href="#computer"><i class="fa-sharp fa-solid fa-desktop"></i>Computer Parts</a></li>
+        <li><a href="#tour"><i class="fa-solid fa-map-location-dot"></i>Digital Tour</a></li>
+      </ul>
+
+      <div class="links">
+        <li class="link"><a href="https://web.facebook.com/ldsako123" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
+        <li class="link"><a href="tel:092.2323.232"><i class="fa-solid fa-phone"></i></a></li>
+        <li class="link"><a href="mailto:example@mail.com"><i class="fa-solid fa-envelope"></i></a></li>
+        <li class="link"><a href="https://goo.gl/maps/zYYRJVbSt1MbUsGZ8" target="_blank"><i class="fa-solid fa-location-dot"></i></a></li>
+        <li class="link"><a href="https://youtu.be/nXkFu30AZqQ" target="_blank"><i class="fa-brands fa-youtube"></i></a></li>
+      </div>
+    </div>
+    <div class="main-section">
+      <section id="home" class="section">
+        <div class="title">
+          <h1>Technology Portfolio</h1>
+          <p>Ricky A. Arenas</p>
+        </div>
+      </section>
+      <section id="cybersecurity" class="section">
+        <h2>Cybersecurity</h2>
+        <div class="video-container">
+            <video width="320" height="240" controls>
+            <source src="assets/safe-online.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </section>
+      <section id="survey" class="section">
+        <h2>Survey</h2>
+        <div class="survey-photo">
+          <img src="assets/survey.jpg" alt="survey">
+        </div>
+      </section>
+      <section id="computer" class="section">
+        <h2>Parts of Computer</h2>
+        <div class="computer-parts">
+          <div class="each"><img src="assets/slide-1.jpg" alt="slide"></div>
+          <div class="each"><img src="assets/slide-2.jpg" alt="slide"></div>
+          <div class="each"><img src="assets/slide-3.jpg" alt="slide"></div>
+          <div class="each"><img src="assets/slide-4.jpg" alt="slide"></div>
+          <div class="each"><img src="assets/slide-5.jpg" alt="slide"></div>
+          <div class="each"><img src="assets/slide-6.jpg" alt="slide"></div>
+          <div class="each"><img src="assets/slide-7.jpg" alt="slide"></div>
+          <div class="each"><img src="assets/slide-8.jpg" alt="slide"></div>
+        </div>
+      </section>
+      <section id="tour" class="section">
+        <h2>Digital Tour</h2>
+        <div class="survey-photo">
+          <img src="assets/digital-tour.jpg" alt="survey">
+        </div>
+      </section>
+    </div>
+  </div>
+  <!-- Dependencies: Font Awesome -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/js/all.min.js"></script>
+  <!-- Dependencies: Slick Carousel -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+  <script>
+    $('.computer-parts').slick({
+      arrows: false,
+      dots: true,
+      infinite: true,
+      speed: 300,
+      slidesToShow: 1,
+      adaptiveHeight: true
+    });
+  </script>
+</body>
+</html>
